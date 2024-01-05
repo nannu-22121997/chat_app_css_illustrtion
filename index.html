@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Chat App</title>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat" id="chat-box">
+        <!-- Messages will be added here dynamically using JavaScript -->
+      </div>
+      <div class="message-input">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type your message..."
+        />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      function sendMessage() {
+        var messageInput = document.getElementById("message-input");
+        var message = messageInput.value;
+
+        if (message.trim() !== "") {
+          var chatBox = document.getElementById("chat-box");
+          var newMessage = document.createElement("div");
+          newMessage.className = "chat-bubble sent";
+          newMessage.textContent = message;
+          chatBox.appendChild(newMessage);
+
+          // Clear the input field after sending the message
+          messageInput.value = "";
+
+          // Simulate a received message after a delay (for demonstration purposes)
+          setTimeout(function () {
+            var receivedMessage = document.createElement("div");
+            receivedMessage.className = "chat-bubble received";
+            receivedMessage.textContent = "Thanks for your message!";
+            chatBox.appendChild(receivedMessage);
+          }, 1000);
+        }
+      }
+    </script>
+  </body>
+</html>
